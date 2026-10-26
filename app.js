@@ -15,20 +15,37 @@
     unknown: "I can answer questions about the Prototype Feedback assignment brief, including deliverables, the deadline, peer reviews, and testing. I do not have a source for that question. Please check the live course page or ask in the Course Questions forum."
   };
 
+  const sources = {
+    deliverables: "Prototype Feedback brief - The Task",
+    deadline: "Prototype Feedback brief - Timeline",
+    grade: "Prototype Feedback brief - How This Is Assessed; supplied FeedbackFruits screen",
+    individual: "Prototype Feedback brief - The Task and Timeline",
+    two: "Supplied FeedbackFruits screen; Prototype Feedback brief - The Task",
+    testing: "Prototype Feedback brief - Using AI on this task",
+    samples: "Prototype Feedback brief - The Task",
+    link: "Prototype Feedback brief - The Task",
+    late: "Prototype Feedback brief - Timeline",
+    questions: "Prototype Feedback brief - Timeline"
+  };
+
+  function cited(key) {
+    return answers[key] + "\n\nSource: " + sources[key];
+  }
+
   function respond(raw) {
     const q = String(raw || '').toLowerCase().replace(/[’‘]/g, "'").trim();
     if (!q) return "Please enter a question about the assignment brief.";
-    if (/(at least 2|two submissions|2 submissions|two files|2 files|上传两个|交两个)/.test(q)) return answers.two;
-    if (/(late|extension|penalty|迟交|逾期)/.test(q)) return answers.late;
-    if (/(own answers|own output|self.grade|self.check|human|validate|test log|testing|test cases|测试|验证)/.test(q)) return answers.testing;
-    if (/(submit|submission|deliverable|hand in|交什么|提交)/.test(q) && /(deadline|due|when|date|截止|什么时候)/.test(q)) return answers.deliverables + "\n\n" + answers.deadline;
-    if (/(grade|points|15%|10%|mark|score|成绩|分数)/.test(q)) return answers.grade;
-    if (/(deadline|due|when|date|november|nov\b|截止|什么时候)/.test(q)) return answers.deadline;
-    if (/(each member|individual|every member|peer|other teams|review|组员|个人|互评)/.test(q)) return answers.individual;
-    if (/(sample|scenario|starter|example quer|示例|问题)/.test(q)) return answers.samples;
-    if (/(demo link|prototype link|working link|url|website|链接|网址)/.test(q)) return answers.link;
-    if (/(submit|submission|deliverable|hand in|need to do|need to provide|交什么|提交|材料)/.test(q)) return answers.deliverables;
-    if (/(forum|email|who to ask|contact|答疑|问老师)/.test(q)) return answers.questions;
+    if (/(at least 2|two submissions|2 submissions|two files|2 files|上传两个|交两个)/.test(q)) return cited('two');
+    if (/(late|extension|penalty|迟交|逾期)/.test(q)) return cited('late');
+    if (/(own answers|own output|self.grade|self.check|human|validate|test log|testing|test cases|测试|验证)/.test(q)) return cited('testing');
+    if (/(submit|submission|deliverable|hand in|交什么|提交)/.test(q) && /(deadline|due|when|date|截止|什么时候)/.test(q)) return cited('deliverables') + "\n\n" + cited('deadline');
+    if (/(grade|points|15%|10%|mark|score|成绩|分数)/.test(q)) return cited('grade');
+    if (/(deadline|due|when|date|november|nov\b|截止|什么时候)/.test(q)) return cited('deadline');
+    if (/(each member|individual|every member|peer|other teams|review|组员|个人|互评)/.test(q)) return cited('individual');
+    if (/(sample|scenario|starter|example quer|示例|问题)/.test(q)) return cited('samples');
+    if (/(demo link|prototype link|working link|url|website|链接|网址)/.test(q)) return cited('link');
+    if (/(submit|submission|deliverable|hand in|need to do|need to provide|交什么|提交|材料)/.test(q)) return cited('deliverables');
+    if (/(forum|email|who to ask|contact|答疑|问老师)/.test(q)) return cited('questions');
     return answers.unknown;
   }
 
