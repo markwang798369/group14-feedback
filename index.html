@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10283e">
+  <meta name="description" content="A small, testable chatbot that answers questions about the Prototype Feedback assignment brief.">
+  <title>Prototype Feedback Guide | Group 14 Demo</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">14</span><span>GROUP 14 <small>PROTOTYPE LAB</small></span></div>
+      <span class="status"><span class="status-dot"></span> DEMO ONLINE</span>
+    </header>
+    <main class="layout">
+      <aside class="intro">
+        <div class="eyebrow">ASSIGNMENT ASSISTANT / V1</div>
+        <h1>Know what to<br><em>submit.</em></h1>
+        <p class="lede">Ask about the Prototype Feedback milestone. This demo answers from the assignment brief supplied to the team.</p>
+        <div class="source-card">
+          <div class="source-head"><span class="source-icon">↗</span><span>SOURCE & SCOPE</span></div>
+          <p>Source: the “2. Prototype Feedback” instructions provided for this demo. The assistant covers the deadline, required materials, testing expectations, and peer feedback.</p>
+          <p>It does not access FeedbackFruits or know your team's own prototype, marks, or submission status.</p>
+        </div>
+        <p class="disclaimer">Please verify course details against the live course page. The brief says the late policy is TBC.</p>
+      </aside>
+      <section class="chat" aria-label="Assignment assistant chat">
+        <div class="chat-head">
+          <div class="avatar">✳</div>
+          <div><strong>Feedback Guide</strong><span>Ask a question about the brief</span></div>
+          <button id="reset" type="button" title="Start a new conversation" aria-label="Start a new conversation">↺</button>
+        </div>
+        <div id="messages" class="messages" aria-live="polite" aria-relevant="additions"></div>
+        <div class="prompt-area">
+          <div class="prompt-title">TRY A QUESTION</div>
+          <div class="chips">
+            <button type="button" data-question="What do we need to submit?">What do we submit?</button>
+            <button type="button" data-question="When is it due?">When is it due?</button>
+            <button type="button" data-question="How many peer reviews does each member do?">Peer reviews</button>
+            <button type="button" data-question="Can the chatbot grade its own answers?">Test validity</button>
+          </div>
+          <form id="ask-form" autocomplete="off">
+            <label class="sr-only" for="question">Your question</label>
+            <input id="question" maxlength="500" placeholder="Type your question here…" required>
+            <button type="submit" aria-label="Send question">↑</button>
+          </form>
+          <div class="form-foot">This is a bounded question-answer demo, not a general-purpose AI model.</div>
+        </div>
+      </section>
+    </main>
+    <footer>GROUP 14 · PROTOTYPE FEEDBACK · BUILT FOR PEER TESTING</footer>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
+
